@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="container">
+    <div class="page-header">
+        <img class="img-article center-block img-responsive" src="{{ article.picture }}" alt="{{ article.title }}"/>
+    </div>
+   <div class="well">
+       <p>{{ article.content|raw}}</p>
+   </div>
+    <p>Auteur: {{ article.user }}</p>
+    <p>{{ article.updatedAt|date('d/m/Y') }}</p>
+    <p><a class="btn btn-info" href="{{ path('category', {'name': article.category }) }}">{{ article.category }}</a></p>
+    </div>
+{% endblock %}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <style>
+            .thumbnail{height: 650px;}
+        </style>
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path('homePage') }}">Wordpres Symfony 2</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="{{ path('homePage') }}">Home</a></li>
+                        <li><a href="{{ path('sonata_admin_dashboard') }}">Admin</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">API<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ path('api_article') }}">Article</a></li>
+                                <li><a href="{{ path('api_category') }}">Category</a></li>
+                                <li><a href="{{ path('api_tag') }}">Tag</a></li>
+                                <li><a href="{{ path('api_user') }}">User</a></li>
+                            </ul>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+
+        {% if articles is defined %}
+            <h1 class="text-center">Wordpress Symfony 2 : Les Bonnes recettes </h1>
+        {% endif %}
+        {% if article is defined %}
+            <h1 class="text-center" >{{ article.title }}</h1>
+        {% endif %}
+        {% if category is defined %}
+            <h1>Categorie: {{ name }}</h1>
+        {% endif %}
+        {% if tags is defined %}
+            <h1>Genre: {{ name }}</h1>
+        {% endif %}
+    </header>
+    {% block body %}{% endblock %}
+    <footer>
+        <p class="text-center">License MIT - Cindy Moutou Groupe web 2</p>
+    </footer>
+</div>
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+{% endblock %}
+</body>
+</html>
